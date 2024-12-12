@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> R S C - Mantenimiento y Reparación</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        header {
+            background-color: #223d5a;
+            color: #ffffff;
+            padding: 10px 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #1b2a38;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            background-color: #4caf50;
+            border-radius: 5px;
+        }
+
+        .hero {
+            background-image: url("imagenes/FONDO.jpg");
+            background-size: cover;
+            color: rgb(255, 255, 255);
+            padding: 50px 20px;
+        }
+
+        .section {
+            padding: 20px;
+            margin: 10px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .services {
+            background-color: #f4f4f4;
+            border: 2px solid #4caf50;
+        }
+
+        .gallery {
+            background-color: #f9f9f9;
+            border: 2px solid #2196f3;
+        }
+
+        .contact {
+            background-color: #fefefe;
+            border: 2px solid #ff9800;
+        }
+
+        .services h2, .gallery h2, .contact h2 {
+            text-align: center;
+        }
+
+        .services ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px;
+        }
+
+        .services ul li {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding: 10px;
+        }
+
+        .services ul li img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        footer {
+            background-color: #2d3e50;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> R S C - Mantenimiento y Reparación</h1>
+        <p>Soluciones rápidas y confiables para tus dispositivos</p>
+    </header>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#historial">Historial</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#nosotros">Acerca de Nosotros</a>
+    </nav>
+    <div class="hero" id="inicio">
+        <h2>Bienvenido a R S C</h2>
+        <p>Confía en nosotros para mantener tus dispositivos en óptimas condiciones</p>
+    </div>
+    <section class="section services" id="servicios">
+        <h2>Servicios</h2>
+        <ul>
+            <li><img src="imagenes/1.jpg" alt="Icono Mantenimiento">Mantenimiento de Computadoras: Limpieza de hardware, instalación de software, actualizaciones.</li>
+            <li><img src="imagenes/2.png" alt="Icono Reparación">Reparación de Teléfonos: Cambio de pantallas, reparación de puertos, sustitución de baterías.</li>
+            <li><img src="imagenes/3.png" alt="Icono Optimización">Optimización de Sistemas: Acelera el rendimiento de tus dispositivos.</li>
+            <li><img src="imagenes/4.png" alt="Icono Recuperación">Recuperación de Datos: Recuperación de archivos eliminados o perdidos.</li>
+        </ul>
+    </section>
+    <section class="section gallery" id="historial">
+        <h2>Historial de Trabajos</h2>
+        <p>Explora algunos de los trabajos realizados:</p>
+        <img src="imagenes/01.png" alt="Trabajo 1">
+        <img src="imagenes/02.jpg" alt="Trabajo 2">
+        <img src="imagenes/03.jpg" alt="Trabajo 3">
+        <img src="imagenes/04.jpg" alt="Trabajo 4">
+        <img src="imagenes/05.jpg" alt="Trabajo 5">
+    </section>
+    <section class="section contact" id="contacto">
+        <h2>Contacto</h2>
+        <p>Envíanos un mensaje para consultas o agendar una cita:</p>
+        <form>
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+            <label for="email">Correo Electrónico:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br><br>
+            <button type="submit" class="button">Enviar</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; R S C - Mantenimiento y Reparación.</p>
+    </footer>
+</body>
+</html>
