@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> R S C - Mantenimiento y Reparación</title>
+    <title>R S C - Mantenimiento y Reparación</title>
     <style>
         /* Estilos generales */
         body {
@@ -64,6 +64,23 @@
             border: 2px solid #2196f3;
         }
 
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .gallery img {
+            height: 200px;
+            object-fit: cover;
+        }
+
         .contact {
             background-color: #fefefe;
             border: 2px solid #ff9800;
@@ -92,13 +109,6 @@
             margin-right: 10px;
         }
 
-        .gallery img {
-            width: 100%;
-            max-width: 300px;
-            margin: 10px;
-            display: inline-block;
-        }
-
         footer {
             background-color: #2d3e50;
             color: #fff;
@@ -118,6 +128,102 @@
             background-color: #45a049;
         }
 
+        .container {
+    text-align: center;
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border: 2px solid #ff0000;
+    border-radius: 0px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; 
+    z-index: 1000; 
+}
+
+.chat-header {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+.message {
+    background-color: #e0e0e0;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+#userMessage {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#sendMessage {
+    padding: 8px 16px;
+    margin-left: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#sendMessage:hover {
+    background-color: #45a049;
+}
+
+.container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+    z-index: 10;
+}
+.floating {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-5px); 
+}
+
+#openChat {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#openChat:hover {
+    background-color: #45a049;
+}
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -132,7 +238,7 @@
 </head>
 <body>
     <header>
-        <h1> R S C - Mantenimiento y Reparación</h1>
+        <h1>R S C - Mantenimiento y Reparación</h1>
         <p>Soluciones rápidas y confiables para tus dispositivos</p>
     </header>
     <nav>
@@ -167,7 +273,7 @@
     <section class="section contact" id="contacto">
         <h2>Contacto</h2>
         <p>Envíanos un mensaje para consultas o agendar una cita:</p>
-        <form>
+        <form id="whatsapp-form" onsubmit="sendMessageToWhatsApp(event)">
             <label for="nombre">Nombre:</label><br>
             <input type="text" id="nombre" name="nombre" required><br><br>
             <label for="email">Correo Electrónico:</label><br>
@@ -177,8 +283,111 @@
             <button type="submit" class="button">Enviar</button>
         </form>
     </section>
+    <div class="container">
+        <button id="openChat" > Abrir chat</button>
+    </div>
+
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <span>Soporte</span>
+            <button id="closeChat">Cerrar</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message">Hola, ¿en qué puedo ayudarte?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userMessage" placeholder="Escribe un mensaje...">
+            <button id="sendMessage">Enviar</button>
+        </div>
+    </div>
+    <section class="section" id="nosotros">
+        <h2>Acerca de Nosotros</h2>
+        <p>R S C comenzó como un pequeño emprendimiento dedicado a brindar soluciones tecnológicas personalizadas. Con más de 10 años de experiencia en mantenimiento y reparación de dispositivos, nos enorgullece ofrecer un servicio confiable y de calidad. Nuestro compromiso es garantizar la satisfacción de cada cliente, manteniendo sus equipos en las mejores condiciones posibles.</p>
+    </section>
+   
     <footer>
         <p>&copy; R S C - Mantenimiento y Reparación.</p>
     </footer>
+  
+    
+    <script>
+        function sendMessageToWhatsApp(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
+
+            // Obtener los datos del formulario
+            var nombre = document.getElementById('nombre').value;
+            var email = document.getElementById('email').value;
+            var mensaje = document.getElementById('mensaje').value;
+
+            // Formatear el mensaje que se enviará por WhatsApp
+            var message = `Nombre: ${nombre}%0ACorreo: ${email}%0AMensaje: ${mensaje}`;
+
+            // Crear el enlace de WhatsApp
+            var whatsappLink = `https://wa.me/4831164475?text=${message}`; // Reemplaza '521234567890' por tu número de WhatsApp
+
+            // Redirigir al usuario a WhatsApp
+            window.open(whatsappLink, '_blank');
+        }
+        document.getElementById('openChat').addEventListener('click', function() {
+    document.getElementById('chatWindow').style.display = 'flex';
+});
+document.getElementById('openChat').addEventListener('click', function() {
+    document.getElementById('chatWindow').style.display = 'flex';
+    promptUserForPhoneNumber(); // Pedir número de teléfono al usuario
+});
+
+document.getElementById('closeChat').addEventListener('click', function() {
+    document.getElementById('chatWindow').style.display = 'none';
+});
+
+document.getElementById('sendMessage').addEventListener('click', function() {
+    let userMessage = document.getElementById('userMessage').value;
+    if (userMessage.trim() !== '') {
+        let messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.textContent = `Tú: ${userMessage}`;
+        document.getElementById('chatBody').appendChild(messageElement);
+        document.getElementById('userMessage').value = '';
+        document.getElementById('chatBody').scrollTop = document.getElementById('chatBody').scrollHeight;
+        
+        // Simular respuesta del soporte
+        setTimeout(() => {
+            simulateSupportResponse(userMessage);
+        }, 1000); // Respuesta automática después de 1 segundo
+    }
+});
+
+// Función para pedir el número de teléfono
+let userPhoneNumber = '';
+
+function promptUserForPhoneNumber() {
+    userPhoneNumber = prompt('Por favor ingrese su nombre:');
+    if (userPhoneNumber) {
+        let welcomeMessage = document.createElement('div');
+        welcomeMessage.classList.add('message');
+        welcomeMessage.textContent = `Bienvenido, ${userPhoneNumber}! ¿En qué puedo ayudarte?`;
+        document.getElementById('chatBody').appendChild(welcomeMessage);
+    }
+}
+
+// Simulación de respuesta del soporte
+function simulateSupportResponse(userMessage) {
+    let supportMessage = document.createElement('div');
+    supportMessage.classList.add('message');
+    supportMessage.textContent = `Soporte: Gracias por tu mensaje. Recibimos: "${userMessage}". ¿En qué más puedo ayudarte?`;
+    document.getElementById('chatBody').appendChild(supportMessage);
+    document.getElementById('chatBody').scrollTop = document.getElementById('chatBody').scrollHeight;
+}
+
+window.onscroll = function() {
+    let chatWindow = document.getElementById('chatWindow');
+    if (window.scrollY > 50) {
+        chatWindow.classList.add('floating');
+    } else {
+        chatWindow.classList.remove('floating');
+    }
+};
+
+    </script>
 </body>
 </html>
